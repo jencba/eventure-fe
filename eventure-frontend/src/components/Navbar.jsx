@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Navbar = () => {
+import { Link } from 'react-router-dom';
+
+export default function Navbar() {
   return (
     <nav>
-      <h1>Eventure</h1>
+      <Link to="/">Home</Link> | <Link to="/events">Events</Link> | <Link to="/profile">Profile</Link>
     </nav>
   );
-};
-
-export default Navbar;
+}
