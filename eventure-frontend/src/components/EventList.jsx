@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API from '../services/api';
+import { Link } from 'react-router-dom';
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -16,7 +17,9 @@ const EventList = () => {
       <ul>
         {events.map((event) => (
           <li key={event.id}>
-            <strong>{event.title}</strong> — {event.date}
+            <Link to={`/events/${event.id}`}>
+              <strong>{event.title}</strong>
+            </Link> — {new Date(event.date).toLocaleDateString()}
           </li>
         ))}
       </ul>
