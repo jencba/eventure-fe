@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../services/api';
+import Loading from '../components/Loading';
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const EventDetails = () => {
   }, [id]);
 
   if (error) return <p>{error}</p>;
-  if (!event) return <p>Loading...</p>;
+  if (!event) return <Loading />;
 
   return (
     <div>
