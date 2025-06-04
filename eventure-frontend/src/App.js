@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import EventsPage from './pages/Events'; 
 import EventDetails from './pages/EventDetails';
 import Register from './pages/Registere';
+import Login from './pages/Login';
 
 
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:id" element={<EventDetails />} />
 
