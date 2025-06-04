@@ -12,17 +12,21 @@ const EventList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>All Events</h2>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>
-            <Link to={`/events/${event.id}`}>
-              <strong>{event.title}</strong>
-            </Link> — {new Date(event.date).toLocaleDateString()}
-          </li>
+    <div className="container mt-4">
+      <h2 className="mb-4">All Events</h2>
+      <div className="row">
+        {events.map(event => (
+          <div key={event.id} className="col-md-6 col-lg-4 mb-3">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">{event.title}</h5>
+                <p className="card-text"><strong>Date:</strong> {event.date}</p>
+                <Link to={`/events/${event.id}`} className="btn btn-outline-primary">View Details</Link>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
