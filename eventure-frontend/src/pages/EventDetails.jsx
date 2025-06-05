@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API from '../services/api';
 import Loading from '../components/Loading';
+import '../App.css'; 
 
 const EventDetails = () => {
   const { id } = useParams();
@@ -14,18 +15,19 @@ const EventDetails = () => {
       .catch((err) => setError('Failed to load event'));
   }, [id]);
 
-  if (error) return <p>{error}</p>;
+  if (error) return <p className="error">{error}</p>;
   if (!event) return <Loading />;
 
   return (
-    <div>
-      <h2>{event.title}</h2>
+    <div className="event-details">
+      <h2 className="event-title">{event.title}</h2>
       <p><strong>Date:</strong> {new Date(event.date).toLocaleString()}</p>
       <p><strong>Location:</strong> {event.location}</p>
       <p>{event.description}</p>
-      
 
-      <button onClick={() => alert('You havee Signed up')}>Sign Up</button>
+      <button className="signup-button" onClick={() => alert('You have Signed up!')}>
+        Sign Up
+      </button>
     </div>
   );
 };

@@ -22,9 +22,9 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <h2 className="login-title">Register</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="email"
           value={email}
@@ -41,8 +41,8 @@ const Register = () => {
         />
         <button type="submit">Register</button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>
+      {error && <p className="login-error">{error}</p>}
+      <p className="login-link">
         Already signed up? <Link to="/login">Login here</Link>
       </p>
     </div>

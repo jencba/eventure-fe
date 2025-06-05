@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
@@ -9,6 +10,7 @@ import Register from './pages/Registere';
 import Login from './pages/Login';
 import AuthRoutes from './components/AuthRoutes';
 import MyEvents from './pages/MyEvents';
+import MyProfile from './pages/MyProfile';
 
 
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/profile" element={<AuthRoutes><MyProfile /></AuthRoutes>} />
+
         <Route
           path="/myevents"
           element={

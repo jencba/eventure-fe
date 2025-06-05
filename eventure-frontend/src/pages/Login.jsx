@@ -16,24 +16,51 @@ const Login = () => {
     setError('');
     try {
       const res = await API.post('/auth/login', formData);
-      const token = res.data.session.access_token;
+
+      const session = res.data?.data?.session || res.data?.session;
+
+      if (!session || !session.access_token || !session.user) {
+        throw new Error('Invalid response from server');
+      }
+
+      const token = session.access_token;
+      const user = session.user;
+
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.error?.message || 'Login failed');
+      setError(
+        err.response?.data?.error?.message || err.message || 'Login failed'
+      );
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
+    <div className="login-container">
+      <h2 className="login-title">Login</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Password"
+          required
+        />
         <button type="submit">Login</button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>
+      {error && <p className="login-error">{error}</p>}
+      <p className="login-link">
         Don’t have an account? <Link to="/register">Register here</Link>
       </p>
     </div>

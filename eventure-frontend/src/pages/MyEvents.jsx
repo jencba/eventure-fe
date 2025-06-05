@@ -56,45 +56,27 @@ const MyEvents = () => {
   };
 
   return (
-    <div>
-      <h2>My Events</h2>
+    <div className="my-events-container">
+      <h2 className="section-title">My Events</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          placeholder="Title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <input
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-        <input
-          name="date"
-          placeholder="Date"
-          type="date"
-          value={formData.date}
-          onChange={handleChange}
-        />
-        <input
-          name="location"
-          placeholder="Location"
-          value={formData.location}
-          onChange={handleChange}
-        />
+      <form onSubmit={handleSubmit} className="event-form">
+        <input name="title" placeholder="Title" value={formData.title} onChange={handleChange} required />
+        <input name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
+        <input name="date" type="date" value={formData.date} onChange={handleChange} required />
+        <input name="location" placeholder="Location" value={formData.location} onChange={handleChange} required />
         <button type="submit">{editingId ? 'Update Event' : 'Create Event'}</button>
       </form>
 
-      <ul>
+      <ul className="event-list">
         {events.map(event => (
-          <li key={event.id}>
-            <strong>{event.title}</strong> — {event.date} @ {event.location}
-            <br />
-            <button onClick={() => handleEdit(event)}>Edit</button>
-            <button onClick={() => handleDelete(event.id)}>Delete</button>
+          <li key={event.id} className="event-item">
+            <div className="event-info">
+              <strong>{event.title}</strong> — {event.date} @ {event.location}
+            </div>
+            <div className="event-buttons">
+              <button onClick={() => handleEdit(event)}>Edit</button>
+              <button onClick={() => handleDelete(event.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
