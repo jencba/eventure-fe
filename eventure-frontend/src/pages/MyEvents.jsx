@@ -55,6 +55,23 @@ const MyEvents = () => {
     }
   };
 
+  const getGoogleCalendarUrl = (event) => {
+    const startDate = new Date(event.date);
+    const endDate = new Date(startDate);
+    endDate.setHours(endDate.getHours() + 1);
+
+    const formatDate = (date) =>
+      date.toISOString().replace(/-|:|\.\d\d\d/g, '');
+
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+      event.title
+    )}&details=${encodeURIComponent(
+      event.description
+    )}&location=${encodeURIComponent(
+      event.location
+    )}&dates=${formatDate(startDate)}/${formatDate(endDate)}&sf=true&output=xml`;
+  };
+
   return (
     <div className="my-events-container">
       <h2 className="section-title">My Events</h2>
@@ -76,6 +93,14 @@ const MyEvents = () => {
             <div className="event-buttons">
               <button onClick={() => handleEdit(event)}>Edit</button>
               <button onClick={() => handleDelete(event.id)}>Delete</button>
+              <a
+                href={getGoogleCalendarUrl(event)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="google-calendar-btn"
+              >
+                Add to Google Calendar
+              </a>
             </div>
           </li>
         ))}
