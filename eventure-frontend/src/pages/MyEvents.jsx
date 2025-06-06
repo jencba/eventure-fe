@@ -87,13 +87,22 @@ const MyEvents = () => {
     <div className="my-events-container">
       <h2 className="section-title">My Events</h2>
 
-      <form onSubmit={handleSubmit} className="event-form">
-        <input name="title" placeholder="Title" value={formData.title} onChange={handleChange} required />
-        <input name="description" placeholder="Description" value={formData.description} onChange={handleChange} required />
-        <input name="date" type="date" value={formData.date} onChange={handleChange} required />
-        <input name="location" placeholder="Location" value={formData.location} onChange={handleChange} required />
-        <button type="submit">{editingId ? 'Update Event' : 'Create Event'}</button>
-      </form>
+        <form onSubmit={handleSubmit} className="event-form" aria-label="Create or edit event form">
+    <label htmlFor="title">Title</label>
+    <input id="title" name="title" value={formData.title} onChange={handleChange} required />
+
+    <label htmlFor="description">Description</label>
+    <input id="description" name="description" value={formData.description} onChange={handleChange} required />
+
+    <label htmlFor="date">Date</label>
+    <input id="date" name="date" type="date" value={formData.date} onChange={handleChange} required />
+
+    <label htmlFor="location">Location</label>
+    <input id="location" name="location" value={formData.location} onChange={handleChange} required />
+
+    <button type="submit">{editingId ? 'Update Event' : 'Create Event'}</button>
+    </form>
+
 
       <ul className="event-list">
         {events.map(event => (

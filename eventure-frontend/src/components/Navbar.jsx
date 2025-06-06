@@ -7,7 +7,7 @@ const Navbar = () => {
     <header className="navbar-header">
       <nav className="navbar-container">
         <div className="navbar-logo">
-          <Link to="/" className="navbar-brand">Eventify</Link>
+          <Link to="/" className="navbar-brand">Eventure</Link>
         </div>
         <ul className="navbar-links">
           <li><Link to="/events">Events</Link></li>

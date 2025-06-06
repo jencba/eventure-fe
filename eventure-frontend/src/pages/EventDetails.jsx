@@ -19,16 +19,21 @@ const EventDetails = () => {
   if (!event) return <Loading />;
 
   return (
-    <div className="event-details">
-      <h2 className="event-title">{event.title}</h2>
-      <p><strong>Date:</strong> {new Date(event.date).toLocaleString()}</p>
-      <p><strong>Location:</strong> {event.location}</p>
-      <p>{event.description}</p>
+    <main className="event-details" aria-labelledby="event-title">
+  <h2 id="event-title">{event.title}</h2>
+  <p><strong>Date:</strong> <time dateTime={event.date}>{new Date(event.date).toLocaleString()}</time></p>
+  <p><strong>Location:</strong> {event.location}</p>
+  <p>{event.description}</p>
 
-      <button className="signup-button" onClick={() => alert('You have Signed up!')}>
-        Sign Up
-      </button>
-    </div>
+  <button 
+    className="signup-button" 
+    onClick={() => alert('You have Signed up!')}
+    aria-label="Sign up for event"
+  >
+    Sign Up
+  </button>
+</main>
+
   );
 };
 

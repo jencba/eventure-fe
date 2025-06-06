@@ -28,30 +28,39 @@ export default function Home() {
   if (error) return <p className="error">{error}</p>;
 
   return (
-    <div className="container">
-      <div className="hero">
-        <h1>Welcome to Eventure 🎉</h1>
-        <p>Discover and join exciting events happening around you.</p>
-        <Link className="btn-primary-custom" to="/events">Browse All Events</Link>
-      </div>
-
-      <h3>Upcoming Events</h3>
-      <div className="row">
+    <main className="container">
+    <section className="hero" aria-labelledby="home-title">
+      <h1 id="home-title">Welcome to Eventure 🎉</h1>
+      <p>Discover and join exciting events happening around you.</p>
+      <Link className="btn-primary-custom" to="/events" aria-label="Browse all events">
+        Browse All Events
+      </Link>
+    </section>
+  
+    <section aria-labelledby="upcoming-events-title">
+      <h3 id="upcoming-events-title">Upcoming Events</h3>
+      <div className="row" role="list">
         {upcomingEvents.length === 0 ? (
           <p>No upcoming events yet.</p>
         ) : (
           upcomingEvents.map(event => (
-            <div key={event.id} className="col-md-4">
+            <article key={event.id} className="col-md-4" role="listitem">
               <div className="card-custom">
-                <h5>{event.title}</h5>
-                <p>{new Date(event.date).toLocaleDateString()}</p>
+                <h4>{event.title}</h4>
+                <time dateTime={event.date}>
+                  {new Date(event.date).toLocaleDateString()}
+                </time>
                 <p>{event.description?.slice(0, 100)}...</p>
-                <Link to={`/events/${event.id}`}>View Details</Link>
+                <Link to={`/events/${event.id}`} aria-label={`View details for ${event.title}`}>
+                  View Details
+                </Link>
               </div>
-            </div>
+            </article>
           ))
         )}
       </div>
-    </div>
+    </section>
+  </main>
+  
   );
 }

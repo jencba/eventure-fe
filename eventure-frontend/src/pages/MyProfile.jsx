@@ -35,18 +35,19 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow p-4">
-        <h2 className="mb-4">My Profile</h2>
-        <div className="mb-3">
-          <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>User ID:</strong> {user.id}</p>
-        </div>
-        <Link to="/myevents" className="btn btn-primary">
-          View My Events
-        </Link>
-      </div>
+    <main className="container mt-5" aria-labelledby="profile-heading">
+  <div className="card shadow p-4">
+    <h2 id="profile-heading">My Profile</h2>
+    <div>
+      <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>User ID:</strong> {user.id}</p>
     </div>
+    <Link to="/myevents" className="btn btn-primary" aria-label="View my events">
+      View My Events
+    </Link>
+  </div>
+</main>
+
   );
 };
 

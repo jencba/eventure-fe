@@ -31,12 +31,17 @@ const Register = () => {
   return (
     <div className="login-container">
       <h2 className="login-title">Register</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required />
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
-        <button type="submit">Register</button>
-      </form>
-      {error && <p className="login-error">{error}</p>}
+      <form className="login-form" onSubmit={handleSubmit} aria-label="Registration Form">
+  <label htmlFor="reg-email">Email</label>
+  <input id="reg-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+
+  <label htmlFor="reg-password">Password</label>
+  <input id="reg-password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+
+  <button type="submit">Register</button>
+</form>
+{error && <p className="login-error" role="alert">{error}</p>}
+
       <p className="login-link">
         Already signed up? <Link to="/login">Login here</Link>
       </p>

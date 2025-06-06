@@ -41,11 +41,16 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2 className="login-title">Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
+      <form className="login-form" onSubmit={handleSubmit} aria-label="Login Form">
+        <label htmlFor="email">Email</label>
+        <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required />
+
+        <label htmlFor="password">Password</label>
+        <input id="password" type="password" name="password" value={formData.password} onChange={handleChange} required />
+
         <button type="submit">Login</button>
-      </form>
+</form>
+{error && <p className="login-error" role="alert">{error}</p>}
       {error && <p className="login-error">{error}</p>}
       <p className="login-link">
         Don’t have an account? <Link to="/register">Register here</Link>
