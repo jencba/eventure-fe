@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import API from '../services/api';
+import Loading from '../components/Loading';
 
 const MyEvents = () => {
   const [events, setEvents] = useState([]);
   const [formData, setFormData] = useState({ title: '', description: '', date: '', location: '' });
   const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const fetchEvents = async () => {
+    setLoading(true);
+    setError('');
     try {
       const res = await API.get('/events');
       const userId = JSON.parse(localStorage.getItem('user'))?.id;
@@ -14,6 +19,9 @@ const MyEvents = () => {
       setEvents(myEvents);
     } catch (err) {
       console.error('Error fetching events:', err);
+      setError('Failed to load events.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,6 +46,7 @@ const MyEvents = () => {
       fetchEvents();
     } catch (err) {
       console.error('Error saving event:', err);
+      setError('Could not save event.');
     }
   };
 
@@ -52,6 +61,7 @@ const MyEvents = () => {
       fetchEvents();
     } catch (err) {
       console.error('Error deleting event:', err);
+      setError('Could not delete event.');
     }
   };
 
@@ -59,9 +69,7 @@ const MyEvents = () => {
     const startDate = new Date(event.date);
     const endDate = new Date(startDate);
     endDate.setHours(endDate.getHours() + 1);
-
-    const formatDate = (date) =>
-      date.toISOString().replace(/-|:|\.\d\d\d/g, '');
+    const formatDate = (date) => date.toISOString().replace(/-|:|\.\d\d\d/g, '');
 
     return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
       event.title
@@ -71,6 +79,9 @@ const MyEvents = () => {
       event.location
     )}&dates=${formatDate(startDate)}/${formatDate(endDate)}&sf=true&output=xml`;
   };
+
+  if (loading) return <Loading />;
+  if (error) return <p className="error">{error}</p>;
 
   return (
     <div className="my-events-container">
