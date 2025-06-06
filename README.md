@@ -49,7 +49,7 @@ npm start
 
 ```
 
-## 📖 Using the Beevents App
+## 📖 Using the Eventure Websitee
 
 ### 👤 As a User
 
