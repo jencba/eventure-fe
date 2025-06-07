@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Eventure-fe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-featured, responsive event management application built with React, React Router, and Axios. Users can view events, register/login, manage their own events, and view profiles. Authentication-protected routes are supported, and the UI is styled with both custom CSS and Bootstrap.
 
-## Available Scripts
 
-In the project directory, you can run:
+#### 🚀 Features:
 
-### `npm start`
+Responsive design for mobile, tablet, and desktop
+User registration and login
+Protected routes (e.g., My Events, My Profile)
+View all events and individual event details
+Create and manage your own events
+Token-based authentication (JWT)
+React Router for client-side routing
+Axios setup for API requests with automatic token handling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🛠️ Tech Stack:
+- React
+- React Router DOM
+- Axios
+- Bootstrap
+- Custom CSS (responsive)
+- Express (backend, assumed on port 5001)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 📦 Installation:
 
-### `npm run build`
+1. **Clone the repository**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/jencba/eventure-fe.git
+cd eventure-fe
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies**
 
-### `npm run eject`
+```bash
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Start the Server**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📖 Using the Eventure Websitee
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 👤 As a User
 
-### Code Splitting
+#### 🔐 Sign Up / Onboarding
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Click **Login** at the top of the page.
+2. In the pop-up dialog, select **User Login**.
+3. Enter your email and password, then click **Sign Up**.
+4. **For testing**, you can:
+   - A. Sign up using your own email/password, **OR**
+   - B. Use this test account:
+     - Email: `hayley@example.com"`
+     - Password: `yourpassword`
+   
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+#### 📝 Booking an Event
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Browse events on the **Homepage** or **Events** page.
+2. Click on an event to visit its details page.
+3. To book:
+   - Click on event and click **sign up**
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+##### 🗂 My Events Tab
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- View **upcoming active events**.
+  - You can **cancel** these events.
+  - Cancelled events become unbookable for users.
+- View **past events** you created.
+
+
+
+---
+
+#### ➕ Creating a New Event
+
+1. Go to the **My Events** from **My Profile**.
+2. Click **Create New**.
+3. Fill out the event creation form (all fields are required).
+
+
+
+
+
